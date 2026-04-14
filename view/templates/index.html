@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalChain | Blockchain Logistics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GlobalChain Logistics</h1>
+            <p>Decentralized Cross-Border Trade & Smart Contract Automation</p>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Left Column: Actions -->
+            <div class="actions-column">
+                <div class="card" style="margin-bottom: 2rem;">
+                    <h2><i class="ph ph-plus-circle"></i> Create Shipment</h2>
+                    <div id="shipmentForm">
+                        <div class="form-group">
+                            <label>Shipment ID</label>
+                            <input type="text" id="shipmentId" placeholder="e.g. SH-9901">
+                        </div>
+                        <div class="form-group">
+                            <label>Exporter</label>
+                            <input type="text" id="exporter" placeholder="Apple Inc.">
+                        </div>
+                        <div class="form-group">
+                            <label>Importer</label>
+                            <input type="text" id="importer" placeholder="Foxconn Shenzhen">
+                        </div>
+                        <div class="form-group">
+                            <label>Carrier</label>
+                            <input type="text" id="carrier" placeholder="Maersk Logistics">
+                        </div>
+                        <div class="form-group">
+                            <label>Amount (USD)</label>
+                            <input type="number" id="amount" placeholder="50000">
+                        </div>
+                        <button onclick="createShipment()">Initialize Trade</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2><i class="ph ph-arrows-clockwise"></i> Update Logistics</h2>
+                    <div class="form-group">
+                        <label>Target Shipment ID</label>
+                        <select id="updateShipmentId">
+                            <option value="">Select Shipment...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>New Status</label>
+                        <select id="newStatus">
+                            <option value="In Transit">In Transit</option>
+                            <option value="Customs Clearing">Customs Clearing</option>
+                            <option value="Delivered">Delivered (Verify Arrival)</option>
+                        </select>
+                    </div>
+                    <button onclick="updateStatus()" style="background: linear-gradient(135deg, #10b981, #3b82f6);">Submit Status Update</button>
+                </div>
+            </div>
+
+            <!-- Right Column: Monitoring -->
+            <div class="monitoring-column">
+                <div class="card" style="min-height: 400px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h2 style="margin-bottom: 0;"><i class="ph ph-activity"></i> Live Tracking</h2>
+                        <div class="form-group" style="margin-bottom: 0; width: 200px;">
+                            <input type="text" id="trackSearch" placeholder="Enter ID..." onkeyup="if(event.key==='Enter') trackShipment()">
+                        </div>
+                    </div>
+                    
+                    <div id="trackingInfo" style="display: none;">
+                        <div class="timeline" id="logisticsTimeline">
+                            <!-- Timeline items injected here -->
+                        </div>
+                    </div>
+                    
+                    <div id="trackingPlaceholder" style="text-align: center; color: var(--text-muted); padding-top: 4rem;">
+                        <i class="ph ph-magnifying-glass" style="font-size: 3rem; opacity: 0.3;"></i>
+                        <p style="margin-top: 1rem;">Enter a Shipment ID to see the audit trail</p>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 2rem;">
+                    <h2><i class="ph ph-cube"></i> Blockchain Ledger</h2>
+                    <div class="blockchain-log" id="blockchainLogs">
+                        <!-- Ledger entries injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
