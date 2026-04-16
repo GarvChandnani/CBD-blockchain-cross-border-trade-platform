@@ -42,5 +42,4 @@ A decentralized application (DApp) for cross-border trade management, built usin
 - **Backend**: Python, Flask
 - **Blockchain**: SHA-256, Proof-of-Work
 - **Frontend**: HTML5, Vanilla CSS (Glassmorphism), JavaScript (Fetch API)
-- **Icons**: Phosphor Icons
-- **Fonts**: Outfit (Google Fonts)
+
